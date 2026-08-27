@@ -12,7 +12,7 @@ from tests.tools.routes import APITestRoutes
 
 loader = MockLoader(
     root=Path("./tests/mock/http/data/accounts"),
-    logger=get_test_logger("ACCOUNTS_MOCK_SERVICE")
+    logger=get_test_logger("ACCOUNTS_MOCK_SERVICE_LOADER")
 )
 
 accounts_mock_router = APIRouter(
