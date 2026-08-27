@@ -35,13 +35,12 @@ class OperationsHTTPClient(HTTPTestClient):
             card_id: UUID | None = None,
             account_id: UUID | None = None
     ) -> GetOperationsResponseTestSchema:
-        response = self.get_operations_api(
-            GetOperationsQueryTestSchema(
+        query = GetOperationsQueryTestSchema(
             user_id=user_id,
             card_id=card_id,
             account_id=account_id
-            )
         )
+        response = self.get_operations_api(query)
         response.raise_for_status()
         return GetOperationsResponseTestSchema.model_validate_json(response.text)
 
