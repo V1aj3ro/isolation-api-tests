@@ -1,4 +1,3 @@
-
 from pathlib import Path
 
 from grpc.aio import ServicerContext
@@ -9,7 +8,6 @@ from contracts.services.cards.rpc_get_cards_pb2 import GetCardsRequest, GetCards
 from tests.mock.grpc.tools import get_scenario_grpc
 from tests.tools.logger import get_test_logger
 from tests.tools.mock import MockLoader
-
 
 loader = MockLoader(
     root=Path("./tests/mock/grpc/data/cards"),
