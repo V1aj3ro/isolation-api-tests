@@ -1,5 +1,6 @@
 from uuid import UUID
 
+import allure
 from httpx import Response
 
 from tests.clients.http.client import HTTPTestClient, build_http_test_client
@@ -13,7 +14,8 @@ from tests.tools.logger import get_test_logger
 from tests.tools.routes import APITestRoutes
 
 
-class OperationsHTTPClient(HTTPTestClient):
+class OperationsHTTPTestClient(HTTPTestClient):
+    @allure.step("Get operation")
     def get_operation_api(self, operation_id: UUID) -> Response:
         return self.get(f"{APITestRoutes.OPERATIONS}/{operation_id}")
 
@@ -24,6 +26,7 @@ class OperationsHTTPClient(HTTPTestClient):
             exclude_none=True
         ))
 
+    @allure.step("Get operations")
     def get_operation(self, operation_id: UUID) -> GetOperationResponseTestSchema:
         response = self.get_operation_api(operation_id)
         response.raise_for_status()
@@ -45,9 +48,9 @@ class OperationsHTTPClient(HTTPTestClient):
         return GetOperationsResponseTestSchema.model_validate_json(response.text)
 
 
-def build_operations_http_test_client() -> OperationsHTTPClient:
+def build_operations_http_test_client() -> OperationsHTTPTestClient:
     client = build_http_test_client(
         logger=get_test_logger("OPERATIONS_HTTP_TEST_CLIENT"),
         config=test_settings.operations_http_client
     )
-    return OperationsHTTPClient(client=client)
+    return OperationsHTTPTestClient(client=client)
