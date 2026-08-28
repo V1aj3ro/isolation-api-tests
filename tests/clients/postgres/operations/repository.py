@@ -8,19 +8,6 @@ from tests.types.operations import OperationTestType, OperationTestStatus
 
 
 class OperationsPostgresTestRepository(PostgresTestRepository):
-    """
-    Репозиторий test-слоя для работы с таблицей operations.
-
-    Его роль — дать тестам доменно-удобные фабричные методы,
-    которые создают в БД записи с нужными атрибутами.
-
-    Важный момент:
-    это не бизнес-логика и не замена processor'а.
-    Мы используем repository только в сценариях,
-    где предмет проверки — синхронное API (например, фильтры),
-    а не event-driven обработка.
-    """
-
     @allure.step("Create in progress purchase operation")
     def create_in_progress_purchase_operation(self) -> OperationsTestModel:
         return self.create(
