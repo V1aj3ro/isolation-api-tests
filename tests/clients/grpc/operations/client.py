@@ -1,4 +1,4 @@
-from uuid import UUID
+import uuid
 
 import allure
 import grpc
@@ -25,20 +25,20 @@ class OperationsGRPCTestClient(GRPCTestClient):
     def get_operations_api(self, request: GetOperationsRequest) -> GetOperationsResponse:
         return self.stub.GetOperations(request)
 
-    def get_operation(self, operation_id: UUID) -> GetOperationResponse:
-        request = GetOperationRequest(id = str(operation_id))
+    def get_operation(self, operation_id: uuid.UUID) -> GetOperationResponse:
+        request = GetOperationRequest(id=str(operation_id))
         return self.get_operation_api(request)
 
     def get_operations(
             self,
-            user_id: UUID,
-            card_id: UUID | None = None,
-            account_id: UUID | None = None
+            user_id: uuid.UUID,
+            card_id: uuid.UUID | None = None,
+            account_id: uuid.UUID | None = None,
     ) -> GetOperationsResponse:
         request = GetOperationsRequest(
-            user_id = str(user_id),
-            card_id = str(card_id),
-            account_id = str(account_id)
+            user_id=str(user_id),
+            card_id=str(card_id) if card_id else None,
+            account_id=str(account_id) if account_id else None,
         )
         return self.get_operations_api(request)
 
@@ -46,6 +46,6 @@ class OperationsGRPCTestClient(GRPCTestClient):
 def build_operations_grpc_test_client() -> OperationsGRPCTestClient:
     channel = build_grpc_test_channel(
         logger=get_test_logger("OPERATIONS_GRPC_TEST_CLIENT"),
-        config=test_settings.operations_grpc_client,
+        config=test_settings.operations_grpc_client
     )
     return OperationsGRPCTestClient(channel=channel)
