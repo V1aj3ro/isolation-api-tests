@@ -1,0 +1,16 @@
+INFO     OPERATIONS_KAFKA_PRODUCER_TEST_CLIENT:producer.py:24 Kafka message produced operations-service.operation-event.inbox
+INFO     OPERATIONS_KAFKA_PRODUCER_TEST_CLIENT:producer.py:31 Kafka producer flush started
+INFO     OPERATIONS_KAFKA_PRODUCER_TEST_CLIENT:producer.py:33 Kafka producer flush finished
+INFO     OPERATIONS_HTTP_TEST_CLIENT:logger_event_hook.py:11 GET http://127.0.0.1:8002/api/v1/operations?userId=dcd2b4b9-7a2e-4d98-bdfe-e1b61020462d - Waiting for response
+INFO     OPERATIONS_HTTP_TEST_CLIENT:logger_event_hook.py:17 GET http://127.0.0.1:8002/api/v1/operations?userId=dcd2b4b9-7a2e-4d98-bdfe-e1b61020462d - Status 200
+INFO     OPERATIONS_ASSERTIONS:operations.py:55 Check get operations response from events
+INFO     BASE_ASSERTIONS:base.py:11 Check that "operations count" equals to 1
+INFO     OPERATIONS_ASSERTIONS:operations.py:20 Check operation from event
+INFO     BASE_ASSERTIONS:base.py:11 Check that "type" equals to PURCHASE
+INFO     BASE_ASSERTIONS:base.py:11 Check that "status" equals to IN_PROGRESS
+INFO     BASE_ASSERTIONS:base.py:11 Check that "amount" equals to 324.72
+INFO     BASE_ASSERTIONS:base.py:11 Check that "user_id" equals to dcd2b4b9-7a2e-4d98-bdfe-e1b61020462d
+INFO     BASE_ASSERTIONS:base.py:11 Check that "card_id" equals to 916a7466-543e-4015-8bf5-da1650c22f6c
+INFO     BASE_ASSERTIONS:base.py:11 Check that "category" equals to tolls
+INFO     BASE_ASSERTIONS:base.py:11 Check that "created_at" equals to 1992-11-27 06:10:07.793769
+INFO     BASE_ASSERTIONS:base.py:11 Check that "account_id" equals to fa260ca0-21e5-45b1-81bb-0f2b5672de17

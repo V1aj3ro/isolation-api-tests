@@ -1,0 +1,22 @@
+INFO     sqlalchemy.engine.Engine:base.py:2698 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1842 INSERT INTO operations (id, type, status, amount, user_id, card_id, account_id, category, created_at) VALUES (%(id)s::UUID, %(type)s, %(status)s, %(amount)s, %(user_id)s::UUID, %(card_id)s::UUID, %(account_id)s::UUID, %(category)s, %(created_at)s)
+INFO     sqlalchemy.engine.Engine:base.py:1842 [cached since 0.536s ago] {'id': UUID('65b6b1e6-76d1-4907-8550-6e7d6bdac34b'), 'type': <OperationTestType.PURCHASE: 'PURCHASE'>, 'status': <OperationTestStatus.COMPLETED: 'COMPLETED'>, 'amount': 463.5, 'user_id': UUID('d7037557-ac3e-469b-87ec-e6880fc7ac41'), 'card_id': UUID('c0c7f558-a755-41df-a158-ad90bc3e1239'), 'account_id': UUID('d9acdfcf-479b-4e03-94fb-fb061db5af9d'), 'category': 'travel', 'created_at': datetime.datetime(1986, 5, 9, 17, 22, 26, 243959)}
+INFO     sqlalchemy.engine.Engine:base.py:1842 SELECT operations.id, operations.type, operations.status, operations.amount, operations.user_id, operations.card_id, operations.account_id, operations.category, operations.created_at 
+FROM operations 
+WHERE operations.id = %(pk_1)s::UUID
+INFO     sqlalchemy.engine.Engine:base.py:1842 [cached since 0.5337s ago] {'pk_1': UUID('65b6b1e6-76d1-4907-8550-6e7d6bdac34b')}
+INFO     sqlalchemy.engine.Engine:base.py:2704 COMMIT
+INFO     OPERATIONS_GRPC_TEST_CLIENT:logger_interceptor.py:11 REQUEST: /contracts.services.operations.OperationsService/GetOperations
+INFO     OPERATIONS_GRPC_TEST_CLIENT:logger_interceptor.py:13 RESPONSE: /contracts.services.operations.OperationsService/GetOperations
+INFO     OPERATIONS_ASSERTIONS:operations.py:88 Check get operations response from models
+INFO     BASE_ASSERTIONS:base.py:11 Check that "operations count" equals to 1
+INFO     OPERATIONS_ASSERTIONS:operations.py:58 Check operation from model
+INFO     BASE_ASSERTIONS:base.py:11 Check that "id" equals to 65b6b1e6-76d1-4907-8550-6e7d6bdac34b
+INFO     BASE_ASSERTIONS:base.py:11 Check that "type" equals to 4
+INFO     BASE_ASSERTIONS:base.py:11 Check that "status" equals to 2
+INFO     BASE_ASSERTIONS:base.py:11 Check that "amount" equals to 463.5
+INFO     BASE_ASSERTIONS:base.py:11 Check that "user_id" equals to d7037557-ac3e-469b-87ec-e6880fc7ac41
+INFO     BASE_ASSERTIONS:base.py:11 Check that "card_id" equals to c0c7f558-a755-41df-a158-ad90bc3e1239
+INFO     BASE_ASSERTIONS:base.py:11 Check that "category" equals to travel
+INFO     BASE_ASSERTIONS:base.py:11 Check that "created_at" equals to 1986-05-09 17:22:26
+INFO     BASE_ASSERTIONS:base.py:11 Check that "account_id" equals to d9acdfcf-479b-4e03-94fb-fb061db5af9d
