@@ -69,7 +69,7 @@ class TestOperationsHTTP:
     )
     @allure.tag(AllureTag.HTTP, AllureTag.POSTGRES, AllureTag.OPERATIONS_SERVICE)
     @allure.story(AllureStory.OPERATION_FILTERS)
-    @allure.title("[HTTP][Postgres] Filter by card id. Completed purchase operation")
+    @allure.title("[HTTP][Postgres] Filter by account id. Completed purchase operation")
     def test_filter_by_account_id_completed_purchase_operation(
             self,
             operations_http_test_client: OperationsHTTPTestClient,
